@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
+var fs = require('fs');
+
 // input:     key and message
 // output:    cipher text
 
@@ -45,5 +47,21 @@ var encrypt = function(key, message){
   return cipherText;
 }
 
-var test = encrypt('xohf', 'this is a test of the emergency alert system');
-console.log(test);
+
+
+var main = function(){
+  var args = process.argv.slice(2, process.argv.length);
+  if (args[1].match(/^\//g)){
+    // read file
+    fs.readFile(args[1], 'utf8', function(err, data){
+      console.log(encrypt(args[0], data));
+    })
+  }else{
+    console.log(encrypt(args[0], args[1]))
+  }
+}
+
+main();
+
+// var test = encrypt('xohf', 'this is a test of the emergency alert system');
+// console.log(test);
