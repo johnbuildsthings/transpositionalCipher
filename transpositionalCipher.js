@@ -31,21 +31,8 @@ var sortElements = function(elements, key){
   return sorted;
 }
 
-var makeKey = function(key){
-  var newKey = '';
-  if(typeof key === 'string'){
-    for(var i=0; i<key.length; i++){
-      newKey += key.charCodeAt(i);
-    }
-  }else{
-    newKey = String(key);
-  }
-  return newKey;
-}
-
-
 var encrypt = function(key, message){
-  key = makeKey(key);
+  key = key.toString();
 
   var chunks = message.match(new RegExp('.{1,'+key.length+'}',"g"));
   var cipherText = '';
@@ -58,5 +45,5 @@ var encrypt = function(key, message){
   return cipherText;
 }
 
-var test = encrypt(3223441, 'this is a test of the emergency alert system');
+var test = encrypt('xohf', 'this is a test of the emergency alert system');
 console.log(test);
