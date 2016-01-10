@@ -82,7 +82,9 @@ var writeToFile = function(key, direction, origin, dest){
 var main = function(){
   var args = process.argv.slice(2, process.argv.length);
   if(args[0] === 'help'){
-    console.log("Enter: key encrypt/decrypt file/message destination/none \nif no destination is given message will print to stdout");
+    console.log("Call format: ./transpositionalCipher.js key encrypt/decrypt file/message destination/none\
+      \n\nmessage file and destination must be absolute paths\
+      \nif no destination is given message will print to stdout");
     return true;
   }
   if (args[2].match(/^\//g)){
